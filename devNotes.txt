@@ -20,3 +20,4 @@
     });
 */
 ➜ yarn add redux-devtools-extension // Redux DevTools - É recomendado a extensão para realizar o debug dos estados no redux. ( Uma variante e reactotron )
+➜ yarn add redux-saga
