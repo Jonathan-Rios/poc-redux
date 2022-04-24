@@ -1,4 +1,6 @@
 import React from 'react';
+import GlobalStyle from './styles/global';
+
 import { Provider } from 'react-redux';
 
 import  store from './store';
@@ -11,6 +13,7 @@ function App() {
     <Provider store={store}>
       <Catalog />
       <Cart />
+      <GlobalStyle />
     </Provider>
   );
 }

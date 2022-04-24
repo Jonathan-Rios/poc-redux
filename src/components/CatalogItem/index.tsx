@@ -1,8 +1,10 @@
 import React, { useCallback } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { IState } from '../store';
-import { addProductToCartRequest } from '../store/modules/cart/actions';
-import { IProduct } from '../store/modules/cart/types';
+import { IState } from '../../store';
+import { addProductToCartRequest } from '../../store/modules/cart/actions';
+import { IProduct } from '../../store/modules/cart/types';
+
+import {Product} from './styles';
 
 interface CatalogItemProps {
   product: IProduct;
@@ -20,18 +22,20 @@ const CatalogItem: React.FC<CatalogItemProps> = ({ product }) => {
   }, [dispatch])
 
   return (
-    <article>
-      <strong>{product.title}</strong> {" - "}
-      <span>{product.price}</span> {" "}
-
+    <Product>
+      <div>
+        <strong>{product.title}</strong> {" - "}
+        <span>{product.price}</span> {" "}
+      </div>
       <button
         type="button"
         onClick={handleAddProductToCart}
+        disabled={!!hasFailedStockCheck}
       >
-        Comprar
+        { !hasFailedStockCheck ? 'Comprar' : 'Falta de estoque'}
       </button>
-      { hasFailedStockCheck && <span style={{color: 'red'}}>Falta de estoque</span>}
-    </article>
+
+    </Product>
   );
 }
 
